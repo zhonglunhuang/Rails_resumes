@@ -1,3 +1,30 @@
 // Place all the styles related to the resumes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.fields {
+    display: block;
+}
+
+.field_with_errors{
+
+    display: inline-block;
+
+    input[type = "text"] {
+        border-color: red;
+        border-width: 1px;
+    }
+    label {
+        color:red
+    }
+}
+
+.flash {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+    color: yellow;
+    padding: 0px 5px;
+}

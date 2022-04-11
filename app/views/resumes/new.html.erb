@@ -1,5 +1,20 @@
 <h1>新增履歷</h1>
 
-<form action="" method="post">
+<%= form_with(model: @resume) do |form| %>
+    <div class="fields">
+    <%= form.label :title, "標題"%>
+    <%= form.text_field :title %>
+    </div>
+
+    <div class="fields">
+    <%= form.label :context, "內容" %>
+    <%= form.text_area :context %>
+    </div>
+
+    <div class="fields">
+    <%= form.label :status, "狀態" %>
+    <%= form.select :status , Resume.all_status %>
+    </div>
     
-</form>
+    <input type="submit" value="新增履歷">
+<% end %>
