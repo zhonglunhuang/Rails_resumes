@@ -1,1 +1,7 @@
-<li><%= resume.title %></li>
+<li>
+    <%= link_to resume.title, resume_path(id: resume.id) %>
+    <span>|</span>
+    <%= link_to "X", resume_path(id: resume.id), method: "delete", data: {
+        confirm: "HI"
+    } %>
+</li>

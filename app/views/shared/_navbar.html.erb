@@ -1,0 +1,12 @@
+<nav>
+    <img src="https://picsum.photos/50/50/?random=10">
+    <ul>
+        <% if user_signed_in? %>
+        <li><%= current_user.username %><span>Hi!</span></li>
+        <li><%= link_to "登出", session_path, method: :delete %></li>
+        <% else %>
+        <li><a href=<%= sign_up_users_path%>>註冊</a></li>
+        <li><a href=<%= sign_in_users_path%>>登入</a></li>
+        <% end %>
+    </ul>
+</nav>

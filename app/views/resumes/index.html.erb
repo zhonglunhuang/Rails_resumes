@@ -1,14 +1,17 @@
-<h1>Resumes#index</h1>` `
+<h1>Resumes#index</h1>
+<h2></h2>
 <a href="/resumes/new">新增履歷</a>
 <a href="<%= new_resumes_path%>">QQ</a>
 <%=link_to "新增履歷", new_resumes_path%>
 
 
 <ul>
-<% @resumes.each do |resume| %>
-    <%= render partial: "resume", locals: {resume: resume } %>
-    <%# <%= render "resume", resume: resume %> %>
-<% end %>
+<%= render @resumes %>
 </ul>
 
+<ul>
+<% @resumes.each do |resume| %>
+    <%= render partial: "resume", locals: {resume: resume} %>
+<% end %>
+</ul>
 

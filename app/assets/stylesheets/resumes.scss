@@ -11,7 +11,7 @@
 
     display: inline-block;
 
-    input[type = "text"] {
+    input[type = "text"][type = "password"] {
         border-color: red;
         border-width: 1px;
     }
