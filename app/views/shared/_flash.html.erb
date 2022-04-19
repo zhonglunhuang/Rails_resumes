@@ -1,4 +1,6 @@
-<div class="flash">
+<div class="flash"  data-controller="flash" >
     <div><%= flash[:notice] %></div>
-    <button>X</button>
+    <div >
+        <button  id="closebtn" data-action="click-> flash#close" >X</button>
+    </div>
 </div>

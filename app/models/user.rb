@@ -3,7 +3,8 @@ class User < ApplicationRecord
    validates :username, presence: true, uniqueness: true, length: { minimum: 6 }
    validates :password, presence: true, confirmation: true, length: { minimum: 6 }
 
-   before_save :encrypt
+   has_many :resumes
+   before_create :encrypt
 
    def self.login(user_data)
       account = user_data[:account]
@@ -11,7 +12,7 @@ class User < ApplicationRecord
 
       if account && password
          user = User.find_by("email = ? OR username = ?", account, account)
-         if user && user.password == HelloKitty::Encoder.encode_password(password)
+         if user && user.password == Check::Encoder.encode_password(password)
             user
          else
             nil

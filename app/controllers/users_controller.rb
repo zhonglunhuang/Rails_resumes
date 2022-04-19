@@ -7,6 +7,18 @@ class UsersController < ApplicationController
         
     end
 
+    def default_resume
+        @user = User.find_by(username: params[:user_id])
+        if @user 
+            @user
+        else
+            render html: "找不到"
+        end
+        @resume = Resume.find_by(user_id: @user.id)
+        # @resume = @user.id
+        # @resume = params[:user_id]
+    end
+    
 
     def create
         @user = User.new(user_params)

@@ -1,7 +1,11 @@
 <h1><%= @resume.title %>履歷</h1>
 
-<%= link_to "修改", edit_resume_path %>
 
-<div>
+<% if current_user.id == @resume.user_id %>
+<%= link_to "修改", edit_resume_path %>
+<% end %>
+
+
+<div data-controller="markdown-viewer">
 <p><%= @resume.context %></p>
 </div>

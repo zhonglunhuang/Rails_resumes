@@ -1,14 +1,26 @@
 class ResumesController < ApplicationController
-rescue_from ActiveRecord::RecordNotFound , with: :not_found
-  before_action :find_resume, only: [:show, :update,:destroy ]
+# rescue_from ActiveRecord::RecordNotFound , with: :not_found
+  before_action :find_resume, only: [:show, :update,:destroy]
+  before_action :authenticate_user?, except: [:index, :show, :my]
+
   def index
     @resumes = Resume.all
+    flash[:notice] = "QQ"
   end
+
+  def my
+    @resumes = current_user.resumes
+  end
+  
   def new
+
     @resume = Resume.new
   end
   def create
-    @resume = Resume.new(resume_params)
+    # @resume = Resume.new(resume_params)
+    # @resume.users_id =  
+
+    @resume = current_user.resumes.new(resume_params)
     if @resume.save
       redirect_to resumes_path, notice: "新增成功"
     else
@@ -31,7 +43,7 @@ rescue_from ActiveRecord::RecordNotFound , with: :not_found
 
   def edit
     begin
-      find_resume
+      find_my_resume
     rescue => exception
       redirect_to "/", notice: "不要亂來"
     end
@@ -56,4 +68,10 @@ rescue_from ActiveRecord::RecordNotFound , with: :not_found
     def find_resume
       @resume = Resume.find(params[:id])
     end
+
+    def find_my_resume
+      # @resume = Resume.find_by!(id: params[:id], user_id: current_user.id)
+      @resume = current_user.resumes.find(params[:id])
+    end
+    
 end

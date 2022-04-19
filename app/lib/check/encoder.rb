@@ -1,4 +1,4 @@
-module HelloKitty
+module Check
     module Encoder
       def self.encode_password(password)
         salt = ["a","b","c","d","e","f"]
