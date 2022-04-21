@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class SessionsController < BaseController
     def create
         user = User.login(params[:user])
         if user

@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < BaseController
     def sign_up
         @user = User.new
     end

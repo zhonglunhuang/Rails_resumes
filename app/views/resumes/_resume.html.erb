@@ -1,14 +1,18 @@
+<% if resume.status == "published" %>
 <li>
     <%= link_to resume.title, user_resume_path(user_id: resume.user.username, id: resume.slug) %>
     <span>|</span>
     <%= user_resume_path(user_id: resume.user.username, id: resume.slug) %>
     <span>|</span>
+
+    <% if policy(:resume).edit? %>
     <%= link_to "預設" , pin_resume_path(id: resume.slug) ,method: "patch"%>
     <span>|</span>
     <%= resume.pinned %>
     <span>|</span>
-
     <%= link_to "X", resume_path(id: resume.id), method: "delete", data: {
-        confirm: "HI"
+        confirm: "sure?"
     } %>
+    <% end %>
 </li>
+<% end %>

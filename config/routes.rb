@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     get :sign_up
     get :sign_in
   end
+  
+  namespace :admin , path: "QQ" do
+    resources :vendors, except: [:show]
+  end
+
 
   resource :session , only: [:create, :destroy]
 end

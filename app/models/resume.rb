@@ -1,7 +1,11 @@
 class Resume < ApplicationRecord
     extend FriendlyId
     friendly_id :random_slug, use: :slugged
-    has_one_attached :photo
+    has_one_attached :photo do |image|
+        image.variant :thumb, resize_to_limit: [50,50]
+    end
+
+
     belongs_to :user
     validates :title, presence: true
     def self.all_status

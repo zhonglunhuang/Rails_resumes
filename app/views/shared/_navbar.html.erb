@@ -4,7 +4,9 @@
         <% if user_signed_in? %>
         <li><%= current_user.username %><span>Hi!</span></li>
         <li><%= link_to "全部履歷", resumes_path %></li>
+        <% if policy(:resume).new? %>
         <li><%= link_to "我的履歷", resumes_my_path %></li>
+        <% end %>
         <li><%= link_to "登出", session_path, method: :delete %></li>
         <% else %>
         <li><%= link_to "全部履歷", resumes_path %></li>

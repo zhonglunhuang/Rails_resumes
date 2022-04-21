@@ -1,4 +1,4 @@
-class SayController < ApplicationController
+class SayController < BaseController
   def hello
   end
 end

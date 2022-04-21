@@ -1,4 +1,4 @@
-class ResumesController < ApplicationController
+class ResumesController < BaseController
 # rescue_from ActiveRecord::RecordNotFound , with: :not_found
   before_action :find_resume, only: [:show, :update,:destroy]
   before_action :find_my_resume, only: [:pin]
@@ -7,6 +7,7 @@ class ResumesController < ApplicationController
   def index
     @resumes = Resume.all
     flash[:notice] = "QQ"
+    @current_user = current_user
   end
 
   def my
