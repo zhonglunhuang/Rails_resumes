@@ -1,6 +1,7 @@
 class ResumesController < ApplicationController
 # rescue_from ActiveRecord::RecordNotFound , with: :not_found
   before_action :find_resume, only: [:show, :update,:destroy]
+  before_action :find_my_resume, only: [:pin]
   before_action :authenticate_user?, except: [:index, :show, :my]
 
   def index
@@ -57,21 +58,30 @@ class ResumesController < ApplicationController
       render :edit
     end
   end
+
+  def pin
+    # byebug
+    current_user.resumes.update_all(pinned: false)
+    @resume.update(pinned: true)
+    redirect_to resumes_my_path , notice: "已設定預設履歷成功"
+  end
+  
+
   private
     def resume_params
-      params.require(:resume).permit(:title, :context, :status)
+      params.require(:resume).permit(:title, :context, :status, :photo)
     end
     def not_found
       render file: "#{Rails.root}/public/404.html",
             status: 404
     end
     def find_resume
-      @resume = Resume.find(params[:id])
+      @resume = Resume.friendly.find(params[:id])
     end
 
     def find_my_resume
       # @resume = Resume.find_by!(id: params[:id], user_id: current_user.id)
-      @resume = current_user.resumes.find(params[:id])
+      @resume = current_user.resumes.friendly.find(params[:id])
     end
     
 end

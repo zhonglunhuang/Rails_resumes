@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # get '/' , to: "index#index"
   root "resumes#index"
   get "/@:user_id" , to: "users#default_resume"
+  get "/@:user_id/:id" , to: "resumes#show" ,as: "user_resume"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get "/resumes/my", to: "resumes#my"
   get "/resumes", to: "resumes#index"
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   get "/resumes/:id/edit", to: "resumes#edit" ,as: "edit_resume"
   patch "resumes/:id", to: "resumes#update"
 
+  patch "resumes/:id/pin" ,to: "resumes#pin" ,as: "pin_resume"
 
   resource :users, only: [:create] do
     get :sign_up

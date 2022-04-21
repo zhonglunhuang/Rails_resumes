@@ -5,7 +5,16 @@
 <%= link_to "修改", edit_resume_path %>
 <% end %>
 
+<% if @resume.photo.attached? %>
+<div style="display: flex; flex-wrap: wrap;">
+<%= image_tag @resume.photo %>
+<%= link_to "看我全圖",@resume.photo %>
+<%= @resume.photo %>
+<%= url_for(@resume.photo)%>
+</div>
+<% end %>
 
 <div data-controller="markdown-viewer">
+
 <p><%= @resume.context %></p>
 </div>
