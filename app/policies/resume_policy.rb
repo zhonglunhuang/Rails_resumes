@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class ResumePolicy < ApplicationPolicy
   def index?
     internal_user || vendor
   end
 
   def new?
-    interviewee 
+    interviewee
   end
-  
+
   def create?
     interviewee
   end
@@ -14,17 +16,15 @@ class ResumePolicy < ApplicationPolicy
   def update?
     edit?
   end
-  
+
   def edit?
     interviewee || internal_user
   end
-  
+
   def destroy
     interviewee
   end
 
   class Scope < Scope
   end
-  
-  
 end

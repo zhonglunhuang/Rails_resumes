@@ -1,0 +1,15 @@
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'bin/*'
+    - 'db/*'
+
+  TargetRubyVersion: 2.5
+  SuggestExtensions: false
+
+  

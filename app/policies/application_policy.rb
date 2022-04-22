@@ -50,19 +50,18 @@ class ApplicationPolicy
 
     attr_reader :user, :scope
   end
+
   private
-    def internal_user
-      user && user.role.in?(['admin','staff'])
-    end
 
-    def vendor
-      user && user.role == "vendor"
-    end
+  def internal_user
+    user&.role&.in?(%w[admin staff])
+  end
 
-    def interviewee
-      user && user.role == "user"
-    end
-    
-    
-    
+  def vendor
+    user && user.role == 'vendor'
+  end
+
+  def interviewee
+    user && user.role == 'user'
+  end
 end
