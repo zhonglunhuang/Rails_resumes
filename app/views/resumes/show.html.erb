@@ -1,13 +1,12 @@
 <h1><%= @resume.title %>履歷</h1>
 
-
-<% if current_user.id == @resume.user_id %>
+<% if @current_user &&  @current_user.id == @resume.user_id %>
 <%= link_to "修改", edit_resume_path %>
 <% end %>
 
 <% if @resume.photo.attached? %>
 <div style="display: flex; flex-wrap: wrap;">
-<%= image_tag @resume.photo %>
+<%= image_tag @resume.photo.variant(resize_to_limit: [500, 100]) %>
 <%= link_to "看我全圖",@resume.photo %>
 <%= @resume.photo %>
 <%= url_for(@resume.photo)%>

@@ -6,7 +6,7 @@ class ResumesController < BaseController
 
   def index
     @resumes = Resume.all
-    flash[:notice] = "QQ"
+    # flash[:notice] = "QQ"
     @current_user = current_user
   end
 
@@ -31,6 +31,7 @@ class ResumesController < BaseController
   end
 
   def show
+    @current_user = current_user
     begin
       find_resume
     rescue => exception

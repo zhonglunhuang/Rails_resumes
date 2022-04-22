@@ -4,7 +4,7 @@ class Admin::VendorsController < Admin::BaseController
     end
     
     def new
-        @vendors = User.new
+        @vendor = User.new
     end
 
     def create
@@ -23,7 +23,7 @@ class Admin::VendorsController < Admin::BaseController
         #     params.require(:user).permit(:username, :email, :password, :password_confirmation)
         # end
         def vendor_params
-            params.permit(:username, :email, :password, :password_confirmation).merge(role: 'vendor')
+            params.require(:user).permit(:username, :email, :password, :password_confirmation).merge(role: 'vendor')
         end
 
 end

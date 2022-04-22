@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.5'
+gem 'mini_magick', '~> 4.11'
 gem "friendly_id", "~> 5.4"
 # gem "image_processing", ">= 1.2"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
@@ -26,12 +27,16 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'capybara', '>= 3.36'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "factory_bot_rails", "~> 6.2"
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :development do
@@ -48,8 +53,8 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
+  gem "rspec-rails", "~> 5.1"  
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
@@ -60,3 +65,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 gem "pundit", "~> 2.2"
+
+gem "tailwindcss-rails", "~> 2.0"
+
+
+
